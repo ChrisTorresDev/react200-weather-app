@@ -1,7 +1,23 @@
 import React from 'react';
+import { 
+  getWeather,
+  getCity 
+} from './formAction'
 
 export default class Form extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleUpdateCity = this.handleUpdateCity.bind(this);
+  }
+
+  handleUpdateCity() {
+    const { city, dispatch } = this.props;
+    dispatch(getWeather(city));
+  }
+
   render() {
+    const { city } = this.props;
     return (
       <form>
         <div className="btn-group" role="group" aria-label="Basic example">
@@ -12,9 +28,21 @@ export default class Form extends React.Component {
           <button type="button" className="btn btn-primary">Tokyo</button>
         </div>
         <div className="input-group">
-          <input type="text" className="form-control" placeholder="" aria-label="" aria-description="basic-addon1"/>
+          <input 
+            type="text"
+            className="form-control"
+            placeholder="Search Any City"
+            aria-label=""
+            value={ city }
+            onChange={ this.getCity }
+          />
           <div className="input-group-append">
-            <button className="btn btn-light" type="button">Go!</button>
+            <button
+              type="button"
+              className="btn btn-light"
+              onClick={ this.handleUpdateCity }
+              >Go!
+            </button>
           </div>
         </div>
       </form>
