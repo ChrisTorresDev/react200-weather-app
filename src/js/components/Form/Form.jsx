@@ -2,13 +2,20 @@ import React from 'react';
 import { 
   getWeather,
   getCity 
-} from './formAction'
+} from './formAction';
 
 export default class Form extends React.Component {
   constructor(props) {
     super(props)
 
     this.handleUpdateCity = this.handleUpdateCity.bind(this);
+  }
+
+  handleCityInput(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    const { value } = e.target;
+    dispatch(getCity(value));
   }
 
   handleUpdateCity() {
@@ -34,7 +41,7 @@ export default class Form extends React.Component {
             placeholder="Search Any City"
             aria-label=""
             value={ city }
-            onChange={ this.getCity }
+            onChange={ this.handleCityInput }
           />
           <div className="input-group-append">
             <button

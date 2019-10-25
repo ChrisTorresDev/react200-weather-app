@@ -1,6 +1,7 @@
 const defaultState = {
   city: '',
-  latLan: '',
+  lon: '',
+  lat: '',
   temp: '',
   pressure: '',
   humidity: '',
@@ -11,15 +12,18 @@ const defaultState = {
 };
 
 const formReducer = (state = defaultState, action) => {
-  if (action.type === "CHANGE_CITY") {
-    return {
-      ...state,
-      city: action.city
-    }
-  } else {
-    return {
-      ...state,
+  const { type, payload } = action;
 
+  switch (type) {
+    case 'CHANGE_CITY': {
+      return {
+        ...state,
+        city: payload.city
+      };
+    }
+
+    default: {
+      return state;
     }
   }
 }
