@@ -1,27 +1,40 @@
 import React from 'react';
-import { 
-  getWeather,
-  getCity 
-} from './formAction';
 
-export default class Form extends React.Component {
+import { 
+  updateCityName,
+  getWeather
+} from '../Actions';
+
+
+export default class Search extends React.Component {
   constructor(props) {
     super(props)
 
-    this.handleUpdateCity = this.handleUpdateCity.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    // this.handleGetWeather = this.handleGetWeather.bind(this);
   }
-
-  handleCityInput(e) {
-    e.preventDefault();
+  
+  onChange(e) {
     const { dispatch } = this.props;
     const { value } = e.target;
-    dispatch(getCity(value));
+    dispatch(updateCityName(value));
   }
 
-  handleUpdateCity() {
-    const { city, dispatch } = this.props;
-    dispatch(getWeather(city));
+  handleClick(e) {
+    event.preventDefault()
+    const { dispatch, city } = this.props;
+    const { value } = e.target;
+    dispatch(getWeather(value || city));
   }
+  
+  // handleGetWeather(e) {
+  //   const { dispatch, cityName } = this.props;
+  //   const { value } = e.target;
+  //   if (event.key === 'Enter') {
+  //     dispatch(getWeather(value || cityName));
+  //   }
+  // }
 
   render() {
     const { city } = this.props;
@@ -40,14 +53,15 @@ export default class Form extends React.Component {
             className="form-control"
             placeholder="Search Any City"
             aria-label=""
+            name="city"
             value={ city }
-            onChange={ this.handleCityInput }
+            onChange={ this.onChange }
           />
           <div className="input-group-append">
             <button
               type="button"
               className="btn btn-light"
-              onClick={ this.handleUpdateCity }
+              onClick={ this.handleClick }
               >Go!
             </button>
           </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from './components/Title';
-import Form from './components/Form/Form';
-import CityInformation from './components/CityInformation/CityInformation';
+import Search from './components/Search';
+import CityInformation from './components/CityInformation';
 import SearchHistory from './components/SearchHistory/SearchHistory';
 
 export default class App extends React.Component {
@@ -13,7 +13,7 @@ export default class App extends React.Component {
             <Title />
           </div>
           <div className='col-md-12 form'>
-            <Form />
+            <Search />
           </div>
           <div className='col-md-6 info'>
             <CityInformation />
