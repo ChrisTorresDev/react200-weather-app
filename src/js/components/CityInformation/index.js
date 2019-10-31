@@ -4,15 +4,15 @@ import CityInfromation from './CityInformation';
 function mapStoreToProps(store) {
   return {
     // name: store.search.name,
-    city: store.search.city,
-    lon: store.search.lon,
-    lat: store.search.lat,
-    temp: store.search.temp,
-    pressure: store.search.pressure,
-    humidity: store.search.humidity,
-    lowestTemp: store.search.lowestTemp,
-    highestTemp: store.search.highestTemp,
-    windSpeed: store.search.windSpeed,
+    city: store.city,
+    lon: store.lon,
+    lat: store.lat,
+    temp: store.temp,
+    pressure: store.pressure,
+    humidity: store.humidity,
+    lowestTemp: store.lowestTemp,
+    highestTemp: store.highestTemp,
+    windSpeed: store.windSpeed,
   };
 }
 
