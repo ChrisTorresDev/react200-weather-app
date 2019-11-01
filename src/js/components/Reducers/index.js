@@ -14,9 +14,13 @@ const defaultState = {
 function mainReducer(state = defaultState, action) {
   const { type, payload } = action;
 
+  // console.log('mainReducer: ', payload);
+
+
   switch (type) {
 
     case 'GET_WEATHER_FUFILLED': {
+      // console.log('GET_WEATHER_FUFILLED: ', state);
       return {
         ...state,
         city: payload.data.name,

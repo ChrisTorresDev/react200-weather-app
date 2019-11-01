@@ -3,15 +3,15 @@ import Search from './Search';
 
 function mapStoreToProps(store) {
   return {
-    city: store.city,
-    lon: store.lon,
-    lat: store.lat,
-    temp: store.temp,
-    pressure: store.pressure,
-    humidity: store.humidity,
-    lowestTemp: store.lowestTemp,
-    highestTemp: store.highestTemp,
-    windSpeed: store.windSpeed
+    city: store.main.city,
+    lon: store.main.lon,
+    lat: store.main.lat,
+    temp: store.main.temp,
+    pressure: store.main.pressure,
+    humidity: store.main.humidity,
+    lowestTemp: store.main.lowestTemp,
+    highestTemp: store.main.highestTemp,
+    windSpeed: store.main.windSpeed
   };
 }
 

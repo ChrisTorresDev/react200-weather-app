@@ -12,7 +12,6 @@ export default class Search extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    // this.handleGetWeather = this.handleGetWeather.bind(this);
   }
   
   onChange(e) {
@@ -22,38 +21,27 @@ export default class Search extends React.Component {
   }
 
   handleClick(e) {
-    event.preventDefault()
+    e.preventDefault()
     const { dispatch, city } = this.props;
-    const { value } = e.target;
-    dispatch(getWeather(value || city));
+    dispatch(getWeather(city));
   }
-  
-  // handleGetWeather(e) {
-  //   const { dispatch, cityName } = this.props;
-  //   const { value } = e.target;
-  //   if (event.key === 'Enter') {
-  //     dispatch(getWeather(value || cityName));
-  //   }
-  // }
 
   render() {
     const { city } = this.props;
     return (
       <form>
         <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-primary">San Diego</button>
-          <button type="button" className="btn btn-primary">New York</button>
-          <button type="button" className="btn btn-primary">Washington D.C</button>
-          <button type="button" className="btn btn-primary">London</button>
-          <button type="button" className="btn btn-primary">Tokyo</button>
+          <button type="button" className="btn btn-primary" value="San Diego" onClick={ this.handleClick }>San Diego</button>
+          <button type="button" className="btn btn-primary" value="New York" onClick={ this.handleClick }>New York</button>
+          <button type="button" className="btn btn-primary" value="Washington D.C" onClick={ this.handleClick }>Washington D.C</button>
+          <button type="button" className="btn btn-primary" value="London" onClick={ this.handleClick }>London</button>
+          <button type="button" className="btn btn-primary" value="Tokyo" onClick={ this.handleClick }>Tokyo</button>
         </div>
         <div className="input-group">
           <input 
             type="text"
             className="form-control"
             placeholder="Search Any City"
-            aria-label=""
-            name="city"
             value={ city }
             onChange={ this.onChange }
           />
