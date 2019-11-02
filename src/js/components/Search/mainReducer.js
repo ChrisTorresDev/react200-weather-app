@@ -13,16 +13,11 @@ const defaultState = {
 
 export default function mainReducer(state = defaultState, action) {
   const { type, payload } = action;  
-
-  // console.log('this is the payload:', payload);
-
   switch (type) {
     case 'GET_WEATHER_FULFILLED': {
-      console.log('payload', payload);
       return {
       
         ...state,
-        cityInfo: payload.data,
         city: payload.data.name,
         lon: payload.data.coord.lon,
         lat: payload.data.coord.lat,
@@ -39,11 +34,6 @@ export default function mainReducer(state = defaultState, action) {
           }
         ]
       };
-    }
-
-    case 'GET_WEATHER_REJECTED': {
-      console.log('rejected', payload);
-      return 'something went wrong';
     }
     
     case 'UPDATE_CITY_NAME': {

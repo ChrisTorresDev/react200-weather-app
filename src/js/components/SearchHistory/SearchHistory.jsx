@@ -1,18 +1,28 @@
 import React from 'react';
 
-export default class searchHistory extends React.Component {
+export default class SearchHistory extends React.Component {
+  constructor(props) {
+    super(props);
+}
+
   render() {
+    const { information } = this.props;
     return (
-      <div className="card">
-        <h5 className="card-header">Search History</h5>
-        <div className="card-body">
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">San Diego</li>
-            <li className="list-group-item">New York</li>
-            <li className="list-group-item">Washington D.C</li>
-            <li className="list-group-item">London</li>
-            <li className="list-group-item">Tokyo</li>
-          </ul>
+      <div className='card mb-3'>
+        <div className='card-header alert-primary'>Search History</div>
+        <div className='card-body'>
+          <table className='table table-sm table-striped'>
+            <tbody>
+              {information == 0 ? 'Your search history will display here.'
+                :
+                information.map(location =>
+                  <tr key={Math.random(1000)}>
+                    <td>{location.city}</td>
+                    <td style={{ width: 120 }}>{new Date().toLocaleString()}</td>
+                  </tr>
+                )}
+            </tbody>
+          </table>
         </div>
       </div>
     )
