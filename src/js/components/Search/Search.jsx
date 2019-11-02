@@ -3,7 +3,7 @@ import React from 'react';
 import { 
   updateCityName,
   getWeather
-} from '../Actions';
+} from './searchActions';
 
 
 export default class Search extends React.Component {

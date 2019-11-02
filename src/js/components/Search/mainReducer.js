@@ -11,18 +11,18 @@ const defaultState = {
   information: []
 };
 
-function mainReducer(state = defaultState, action) {
-  const { type, payload } = action;
+export default function mainReducer(state = defaultState, action) {
+  const { type, payload } = action;  
 
-  // console.log('mainReducer: ', payload);
-
+  // console.log('this is the payload:', payload);
 
   switch (type) {
-
-    case 'GET_WEATHER_FUFILLED': {
-      // console.log('GET_WEATHER_FUFILLED: ', state);
+    case 'GET_WEATHER_FULFILLED': {
+      console.log('payload', payload);
       return {
+      
         ...state,
+        cityInfo: payload.data,
         city: payload.data.name,
         lon: payload.data.coord.lon,
         lat: payload.data.coord.lat,
@@ -30,8 +30,8 @@ function mainReducer(state = defaultState, action) {
         pressure: payload.data.main.pressure,
         humidity: payload.data.main.humidity,
         lowestTemp: payload.data.main.temp_min,
-        lowestTemp: payload.data.main.temp_max,
-        lowestTemp: payload.data.main.wind.speed,
+        highestTemp: payload.data.main.temp_max,
+        windSpeed: payload.data.wind.speed,
         information: [
           ...state.information,
           {
@@ -41,6 +41,11 @@ function mainReducer(state = defaultState, action) {
       };
     }
 
+    case 'GET_WEATHER_REJECTED': {
+      console.log('rejected', payload);
+      return 'something went wrong';
+    }
+    
     case 'UPDATE_CITY_NAME': {
       return {
         ...state,
@@ -53,5 +58,3 @@ function mainReducer(state = defaultState, action) {
     }
   }
 }
-
-export default mainReducer;
